@@ -1,0 +1,16 @@
+From b3971d6d679cdaadc9b53c7853770649e1d29c2a Mon Sep 17 00:00:00 2001
+From: Home <home@Homes-MBP.ht.home>
+Date: Fri, 15 Dec 2023 18:17:00 -0600
+Subject: [PATCH] Add patch file for all changes
+
+---
+ all_changes.patch | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 all_changes.patch
+
+diff --git a/all_changes.patch b/all_changes.patch
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.24.3 (Apple Git-128)
+

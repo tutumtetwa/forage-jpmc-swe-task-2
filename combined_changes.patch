@@ -1,0 +1,128 @@
+From b3971d6d679cdaadc9b53c7853770649e1d29c2a Mon Sep 17 00:00:00 2001
+From: Home <home@Homes-MBP.ht.home>
+Date: Fri, 15 Dec 2023 18:17:00 -0600
+Subject: [PATCH 1/2] Add patch file for all changes
+
+---
+ all_changes.patch | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 all_changes.patch
+
+diff --git a/all_changes.patch b/all_changes.patch
+new file mode 100644
+index 0000000..e69de29
+-- 
+2.24.3 (Apple Git-128)
+
+
+From 05c9b2d437e590f3b25aa476549dbb82c4ec7f3d Mon Sep 17 00:00:00 2001
+From: Home <home@Homes-MBP.ht.home>
+Date: Fri, 15 Dec 2023 18:31:57 -0600
+Subject: [PATCH 2/2] Add my_changes.patch and single_commit.patch
+
+---
+ my_changes.patch    | 68 +++++++++++++++++++++++++++++++++++++++++++++
+ single_commit.patch | 16 +++++++++++
+ 2 files changed, 84 insertions(+)
+ create mode 100644 my_changes.patch
+ create mode 100644 single_commit.patch
+
+diff --git a/my_changes.patch b/my_changes.patch
+new file mode 100644
+index 0000000..56bf291
+--- /dev/null
++++ b/my_changes.patch
+@@ -0,0 +1,68 @@
++From 5cd1c646638ebde9befcba8436c4ef2b4562b7d5 Mon Sep 17 00:00:00 2001
++From: Tutu <116677145+tutumtetwa@users.noreply.github.com>
++Date: Fri, 15 Dec 2023 18:01:25 -0600
++Subject: [PATCH] Update App.tsx
++
++---
++ src/App.tsx | 21 +++++++++++++++++----
++ 1 file changed, 17 insertions(+), 4 deletions(-)
++
++diff --git a/src/App.tsx b/src/App.tsx
++index 0728518..2b44911 100755
++--- a/src/App.tsx
+++++ b/src/App.tsx
++@@ -8,6 +8,7 @@ import './App.css';
++  */
++ interface IState {
++   data: ServerRespond[],
+++  showGraph: boolean,
++ }
++ 
++ /**
++@@ -22,6 +23,7 @@ class App extends Component<{}, IState> {
++       // data saves the server responds.
++       // We use this state to parse data down to the child element (Graph) as element property
++       data: [],
+++      showGraph: false,
++     };
++   }
++ 
++@@ -29,20 +31,31 @@ class App extends Component<{}, IState> {
++    * Render Graph react component with state.data parse as property data
++    */
++   renderGraph() {
+++    if (this.state.showGraph){
++     return (<Graph data={this.state.data}/>)
+++    } 
++   }
++ 
++   /**
++    * Get new data from server and update the state with the new data
++    */
++   getDataFromServer() {
++-    DataStreamer.getData((serverResponds: ServerRespond[]) => {
+++    let x = 0;
+++    const interval = setInterval(() => {
+++      DataStreamer.getData((serverResponds: ServerRespond[]) => {
++       // Update the state by creating a new array of data that consists of
++       // Previous data in the state and the new data from server
++-      this.setState({ data: [...this.state.data, ...serverResponds] });
+++      this.setState({ 
+++        data: serverResponds,
+++        showGraph : true,
+++      });
++     });
++-  }
++-
+++    x++;
+++    if (x > 1000) {
+++      clearInterval(interval);
+++    }
+++   }, 100)
+++  } 
++   /**
++    * Render the App react component
++    */
++-- 
++2.24.3 (Apple Git-128)
++
+diff --git a/single_commit.patch b/single_commit.patch
+new file mode 100644
+index 0000000..a5c701e
+--- /dev/null
++++ b/single_commit.patch
+@@ -0,0 +1,16 @@
++From b3971d6d679cdaadc9b53c7853770649e1d29c2a Mon Sep 17 00:00:00 2001
++From: Home <home@Homes-MBP.ht.home>
++Date: Fri, 15 Dec 2023 18:17:00 -0600
++Subject: [PATCH] Add patch file for all changes
++
++---
++ all_changes.patch | 0
++ 1 file changed, 0 insertions(+), 0 deletions(-)
++ create mode 100644 all_changes.patch
++
++diff --git a/all_changes.patch b/all_changes.patch
++new file mode 100644
++index 0000000..e69de29
++-- 
++2.24.3 (Apple Git-128)
++
+-- 
+2.24.3 (Apple Git-128)
+
